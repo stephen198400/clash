@@ -1,6 +1,6 @@
-# America
-PROCESS-NAME,America
-USER-AGENT,America*
+# us
+PROCESS-NAME,us
+USER-AGENT,us*
 DOMAIN-KEYWORD,gov
 DOMAIN-KEYWORD,city
 DOMAIN-KEYWORD,county
