@@ -3,5 +3,3 @@ PROCESS-NAME,OpenAI
 USER-AGENT,OpenAI*
 DOMAIN-SUFFIX,openai.com
 DOMAIN-SUFFIX,ai.com
-HOST-SUFFIX,identrust.com,OpenAI
-HOST-SUFFIX,auth0.com,OpenAI
