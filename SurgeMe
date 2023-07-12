@@ -1,0 +1,185 @@
+Here is the config with plain fonts:
+
+```
+[General] 
+# > tutu的surge配置 欢迎使用
+# > 配置下载URL: https://raw.githubusercontent.com/bunizao/TutuBetterRules/tutu/Surge/Surge.conf
+# > 使用教程查看: https://github.com/bunizao/TutuBetterRules/blob/tutu/Surge/README.md  
+# > 花样字体生成: https://qwerty.dev/fancy-font-generator/
+# > 推荐订阅转换: https://sub.tuu.cat
+# > 机场转义ENCODE: https://www.urlencoder.org
+# > 更新通知telegram频道: https://t.me/hututu00
+# > Update: 2023.06.27 22:28
+# > V2.3
+
+# General
+http-listen = 0.0.0.0:8888
+socks5-listen = 0.0.0.0:8889
+external-controller-access = tutu@0.0.0.0:6170
+
+# Lateracy
+internet-test-url = http://wifi.vivo.com.cn/generate_204  
+proxy-test-url = http://cp.cloudflare.com/generate_204
+test-timeout = 3
+ipv6 = true
+ipv6-vif = auto
+show-error-page-for-reject = true
+
+# Advanced
+loglevel = notify
+exclude-simple-hostnames = true
+use-default-policy-if-wifi-not-primary = false
+force-http-engine-hosts = boxjs.com, boxjs.net
+always-real-ip = *.lan, cable.auth.com, *.msftconnecttest.com, *.msftncsi.com, *.*.*.srv.nintendo.net, *.*.stun.playstation.net, xbox.*.*.microsoft.com, *.*.xboxlive.com, stun.*, localhost.ptlogin2.qq.com, *.logon.battlenet.com.cn, *.logon.battle.net, *.blzstatic.cn, music.163.com, *.music.163.com, *.126.net, musicapi.taihe.com, music.taihe.com, songsearch.kugou.com, trackercdn.kugou.com, *.kuwo.cn, api-jooxtt.sanook.com, api.joox.com, joox.com, y.qq.com, *.y.qq.com, streamoc.music.tc.qq.com, mobileoc.music.tc.qq.com, isure.stream.qqmusic.qq.com, dl.stream.qqmusic.qq.com, aqqmusic.tc.qq.com, amobile.music.tc.qq.com, *.xiami.com, *.music.migu.cn, music.migu.cn, proxy.golang.org, *.mcdn.bilivideo.cn, *.cmpassport.com, id6.me, open.e.189.cn, mdn.open.wo.cn, auth.wosms.cn, *.jegotrip.com.cn, *.icitymobile.mobi, *.pingan.com.cn, *.cmbchina.com, pool.ntp.org, *.pool.ntp.org, ntp.*.com, time.*.com, ntp?.*.com, time?.*.com, time.*.gov, time.*.edu.cn, *.ntp.org.cn, PDC._msDCS.*.*, DC._msDCS.*.*, GC._msDCS.*.*
+
+# DNS
+hijack-dns = *:53  
+dns-server = 119.29.29.29, 223.5.5.5, system
+read-etc-hosts = true
+doh-skip-cert-verification = true
+encrypted-dns-server = https://dns.alidns.com/dns-query
+encrypted-dns-follow-outbound-mode = true
+
+# > 跳过代理
+skip-proxy = localhost, *.local, passenger.t3go.cn, e.crashlytics.com, captive.apple.com, app.yinxiang.com, injections.adguard.org, local.adguard.org, cable.auth.com, yunbusiness.ccb.com, 10.0.0.0/8, 100.64.0.0/10, 127.0.0.1/32, 169.254.0.0/16, 172.16.0.0/12, 192.168.0.0/16, 224.0.0.0/4, 240.0.0.0/4, ::1/128, fc00::/7, fd00::/8, fe80::/10, ff00::/8, 2001::/32, 2001:db8::/32, 2002::/16, ::ffff:0:0:0:0/1, ::ffff:128:0:0:0/1
+# Others
+allow-wifi-access = false  
+hide-vpn-icon = true
+allow-hotspot-access = true
+# network-framework = true
+http-api = tutu@0.0.0.0:2500
+http-api-web-dashboard = true
+all-hybrid = false
+wifi-access-http-port = 1314
+udp-priority = true
+
+[Replica]
+# 0 为关闭,1 为开启
+# > 隐藏 Apple 请求
+hide-apple-request = 0
+# > 隐藏崩溃追踪器请求 
+hide-crash-reporter-request = 1
+# > 隐藏 UDP 会话
+hide-udp = 0
+# > 关键词过滤器
+# none(关闭关键词过滤器) / whitelist(blacklist(仅记录包含关键字的请求)) / blacklist(仅记录不包含关键字的请求) / pattern(匹配通配符的请求)
+# keyword-filter-type = none
+# > 关键词
+# keyword-filter = (null)
+
+[Proxy Group]  
+# > 这是一个final规则 没有命中的连接会走以下的策略组
+
+# > 这是你的机场链接填写的地方 在policy_path=后面粘贴你自己机场的訂閱連結(不要在这里粘贴 谢谢)
+
+# > 以下是策略组 需先配置好sub-store使用 
+AllServer = select, policy-path=https://sub.store/download/collection/Surge, update-interval=0, no-alert=0, hidden=0
+Proxy = select, Automatic, Fallback, 🇭🇰Hong Kong, 🇨🇳Taiwan, 🇸🇬Singapore, 🇯🇵Japan, 🇺🇸United States, no-alert=0, hidden=1, include-all-proxies=0
+Automatic = url-test, policy-path=https://sub.store/download/collection/Surge, url=http://www.gstatic.com/generate_204, interval=600, tolerance=50
+Fallback = fallback, policy-path=https://sub.store/download/collection/Surge, url=http://www.gstatic.com/generate_204, interval=600, tolerance=50
+🟢 大陆直连 = select, DIRECT, hidden=1
+ Apple = select, 🟢 大陆直连, 🇭🇰Hong Kong, 🇨🇳Taiwan, 🇸🇬Singapore, 🇯🇵Japan, 🇺🇸United States
+📺 bilibili = select, 🟢 大陆直连, 🇭🇰Hong Kong, 🇨🇳Taiwan
+🎥 Netflix = select, 🇭🇰Hong Kong, 🇨🇳Taiwan, 🇸🇬Singapore, 🇯🇵Japan, 🇺🇸United States
+💵 PayPal = select, 🟢 大陆直连, 🇭🇰Hong Kong, 🇺🇸United States
+🐦 Telegram = select, Automatic, 🇸🇬Singapore, 🇺🇸United States
+🎬 TikTok = select, 🇨🇳Taiwan, 🇸🇬Singapore, 🇯🇵Japan, 🇺🇸United States
+👾 OpenAI = select, 🇨🇳Taiwan, 🇸🇬Singapore, 🇯🇵Japan, 🇺🇸United States  
+🕊️ Twitter = select, Automatic, 🇭🇰Hong Kong, 🇨🇳Taiwan, 🇸🇬Singapore, 🇯🇵Japan, 🇺🇸United States
+📹 YouTube = select, Automatic, 🇭🇰Hong Kong, 🇨🇳Taiwan, 🇸🇬Singapore, 🇯🇵Japan, 🇺🇸United States
+🐟 漏网之鱼 = select, 🟢 大陆直连, Automatic, 🇭🇰Hong Kong, 🇨🇳Taiwan, 🇸🇬Singapore, 🇯🇵Japan, 🇺🇸United States
+🇭🇰Hong Kong = url-test, policy-path=https://sub.store/download/collection/Surge, policy-regex-filter=港|🇭🇰|香港|HK|Hong, interval=600, tolerance=50,update-interval=43200, no-alert=0, hidden=0, include-all-proxies=0
+🇨🇳Taiwan = url-test, policy-path=https://sub.store/download/collection/Surge, policy-regex-filter=台|🇨🇳|台湾|TW|Tai, interval=600, tolerance=50,update-interval=43200, no-alert=0, hidden=0, include-all-proxies=0  
+🇯🇵Japan = url-test, policy-path=https://sub.store/download/collection/Surge, policy-regex-filter=日|🇯🇵|日本|JP|Japan, interval=600, tolerance=50,update-interval=43200, no-alert=0, hidden=0, include-all-proxies=0
+🇸🇬Singapore = url-test, policy-path=https://sub.store/download/collection/Surge, policy-regex-filter=坡|🇸🇬|新加坡|狮城|SG|Singapore, interval=600, tolerance=50,update-interval=43200, no-alert=0, hidden=0, include-all-proxies=0
+🇺🇸United States = url-test, policy-path=https://sub.store/download/collection/Surge, policy-regex-filter=美|🇺🇸|美国|US|States|American, interval=600, tolerance=50,update-interval=43200, no-alert=0, hidden=0, include-all-proxies=0
+
+[Rule]
+# ban UDP on Youtube
+# AND,((PROTOCOL,UDP), (DOMAIN-SUFFIX,googlevideo.com)),REJECT-NO-DROP
+
+# > Direct(Google|Proxy|Download|Spotify)  
+RULE-SET,https://raw.githubusercontent.com/bunizao/TutuBetterRules/tutu/RuleList/DOMAlN/Direct.list,DIRECT
+
+
+# ------Rulesets (规则集)------
+# > Whitelist
+RULE-SET,https://raw.githubusercontent.com/bunizao/TutuBetterRules/tutu/RuleList/DOMAlN/Whitelist_Proxy.list,Proxy
+
+# Anti-AD
+RULE-SET,https://ruleset.isagood.day/reject.conf,REJECT 
+DOMAIN-SET,https://ruleset.isagood.day/reject_tinygif.conf,REJECT-TINYGIF
+DOMAIN-SET,https://ruleset.isagood.day/reject_domain.conf,REJECT
+RULE-SET,https://ruleset.isagood.day/reject_drop.conf,REJECT-DROP
+
+# > Stream Media
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/BiliBili/BiliBili.list,📺 bilibili
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Disney/Disney.list,🎥 Disney+
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Netflix/Netflix.list,🎥 Netflix  
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AbemaTV/AbemaTV.list,🇯🇵Japan //AbemaTV
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Peacock/Peacock.list,🇺🇸United States //Peacock
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/HBOUSA/HBOUSA.list,🇺🇸United States // HBO NOW && HBO MAX
+
+# > PayPal: 注意,与金融有关的境外服务建议固定访问ip. 
+RULE-SET,https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/Extra/PayPal.list,💵 PayPal
+# >Telegram
+RULE-SET,https://raw.githubusercontent.com/bunizao/TutuBetterRules/tutu/RuleList/DOMAlN/Telegram.list,🐦 Telegram
+# > TikTok  
+RULE-SET,https://raw.githubusercontent.com/Semporia/TikTok-Unlock/master/Surge/TikTok.list,🎬 TikTok
+# > ChatGPT
+RULE-SET,https://raw.githubusercontent.com/bunizao/TutuBetterRules/tutu/RuleList/DOMAlN/OpenAI.list,👾 OpenAI
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Twitter/Twitter.list,🕊️ Twitter
+# > Youtube & Google Search
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/YouTube/YouTube.list,📹 YouTube
+RULE-SET,https://raw.githubusercontent.com/bunizao/TutuBetterRules/tutu/RuleList/DOMAlN/Google_Search.list,🇺🇸United States
+# > Apple  
+RULE-SET,https://raw.githubusercontent.com/bunizao/TutuBetterRules/tutu/RuleList/DOMAlN/Apple_Direct.list,DIRECT
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleNews/AppleNews.list,🇺🇸United States
+RULE-SET,https://raw.githubusercontent.com/bunizao/TutuBetterRules/tutu/RuleList/DOMAlN/Apple_Proxy.list,Proxy
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Apple/Apple.list, Apple
+# > Global
+RULE-SET,https://raw.githubusercontent.com/bunizao/TutuBetterRules/tutu/RuleList/DOMAlN/Global.list,Proxy
+# > China  
+RULE-SET,https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/China.list,DIRECT
+# > Local Area Network 局域网  
+IP-CIDR,192.168.0.0/16,DIRECT
+IP-CIDR,10.0.0.0/8,DIRECT
+IP-CIDR,172.16.0.0/12,DIRECT
+Here is the config with plain fonts continued:
+
+```
+IP-CIDR,127.0.0.0/8,DIRECT
+IP-CIDR,100.64.0.0/10,DIRECT
+IP-CIDR,224.0.0.0/4,DIRECT
+RULE-SET,LAN,DIRECT
+# > ASN China
+RULE-SET,https://raw.githubusercontent.com/VirgilClyne/GetSomeFries/main/ruleset/ASN.China.list,DIRECT
+# > GeoIP China(若启用,则需禁用 ASN)  
+# GEOIP,CN,DIRECT
+# > DNS 查询失败走 Final 规则
+FINAL,🐟 漏网之鱼,dns-failed
+
+[Host]
+# > 该段定义本地 DNS 记录
+# > 该功能等同于 /etc/hosts,加上了泛解析和别名支持。  
+
+[URL Rewrite]  
+# > 建议引用模块:
+ # - https://raw.githubusercontent.com/bunizao/TutuBetterRules/tutu/Surge/module/All-in-One.sgmodule 最强力的去广告模块
+ #- https://raw.githubusercontent.com/bunizao/TutuBetterRules/tutu/Surge/module/All-in-One-2.x.sgmodule 最强力的去广告模块 进阶版
+ # - https://raw.githubusercontent.com/bunizao/TutuBetterRules/tutu/Surge/module/SurgePro.sgmodule Surge 增强
+     # 详情请见 https://t.me/hututu00/470
+
+[Script]
+Sub-Store Core=type=http-request,pattern=^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info))),script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-1.min.js,requires-body=true,timeout=120,ability=http-client-policy
+Sub-Store Simple=type=http-request,pattern=^https?:\/\/sub\.store,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-0.min.js,requires-body=true
+Sub-Store Sync=type=cron,cronexp=0 0 * * *,wake-system=1,timeout=120,script-path=https://github.com/sub-store-org/Sub-Store/releases/latest/download/cron-sync-artifacts.min.js
+Rewrite: BoxJs = type=http-request,pattern=https?:\/\/boxjs\.(com|net),script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js, requires-body=true, timeout=120
+
+[MITM]  
+hostname = sub.store
+skip-server-cert-verify = true
+tcp-connection = true
+h2 = true
+hostname = sub.store
+```
