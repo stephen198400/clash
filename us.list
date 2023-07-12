@@ -6,9 +6,12 @@ DOMAIN-KEYWORD,city
 DOMAIN-KEYWORD,county
 DOMAIN-KEYWORD,GIS
 DOMAIN-KEYWORD,homedepot
+DOMAIN-KEYWORD,claude
+DOMAIN-KEYWORD,anthropic
 DOMAIN-SUFFIX,houzz.com
 DOMAIN-SUFFIX,library.municode.com
 DOMAIN-SUFFIX,houzz.com 
 DOMAIN-SUFFIX,bard.google.com 
 DOMAIN-SUFFIX,claude.ai
 DOMAIN-SUFFIX,anthropic.com
+
